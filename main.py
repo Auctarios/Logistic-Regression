@@ -1,5 +1,5 @@
 from sklearn.model_selection import train_test_split
-from evalvalid import *
+from Evaluate_Validate.evalvalid import *
 from LogisticRegression.LogisticRegression import *
 import PrepareData.preprocess as pp
 import pandas as pd
