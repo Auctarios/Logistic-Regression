@@ -2,12 +2,28 @@
 
 ## Introduction
 
-This document provides an analysis of the Logistic Regression model used in this project. We detail the effects of hyperparameter tuning, specifically the learning rate (`LR`) and regularization strength (`lambda`), on model performance.
+This document provides an analysis of the Logistic Regression model used in this project. We detail the effects of hyperparameter tuning, specifically the learning rate (`LR`) on model performance.
 
-## Hyperparameters in Focus
+## Parameters
 
 - **Learning Rate (LR):** Controls the step size during the iterative optimization process.
-- **Regularization (Lambda):** Applies a penalty to increasing model complexity to prevent overfitting.
+- **Batch Size:** Size of batches for gradient descent.
+- **L2 Regularization Coef:** The L2 regularization coef. to prevent overfitting.
+- **Number of Iterations:** The number of iterations.
+
+<img src="results.png" alt="Alt text" title="Optional title" width="500"/>
+
+## Experiment Setup
+
+- **Learning Rate (LR):** Varied across experiments to observe the impact on model performance.
+
+    - Tested with the values `1`, `0.5`, `0.2`, `0.1`
+
+- **Batch Size:** Number of data // 10000 -> (~16)
+
+- **L2 Regularization Coef:** Kept constant 0
+
+- **Number of Iterations:** Kept constant 500
 
 ## Model Performance Observations
 
@@ -17,6 +33,7 @@ Increasing the learning rate results in improved accuracy metrics:
 - Precision
 - Recall
 - F1-Score
+- AUC (Area Under Curve)
 
 This suggests that larger updates to the model weights help the model to converge faster to a robust set of parameters.
 
@@ -31,6 +48,6 @@ The Receiver Operating Characteristic (ROC) curve and the Area Under Curve (AUC)
 
 ## Conclusion
 
-The analysis indicates that while a higher learning rate can improve overall model performance, it also increases the variability of error rates. It is essential to find a balance between learning rate and regularization to ensure the model is not only accurate but also generalizable to new data.
+The analysis indicates that while a higher learning rate can improve overall model performance, it also increases the variability of error rates. It is essential to find a balance between learning rate and regularization to ensure the model is not only accurate but also generalizable to new data. Also increasing number of iterations and decreasing the learning rate while using small batch sizes would improve the result.
 
 ---
