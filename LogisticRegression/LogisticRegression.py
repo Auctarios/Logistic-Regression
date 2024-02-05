@@ -9,7 +9,7 @@ from timeit import default_timer as timer
 
 
 
-def sigmoid_function(x):
+def sigmoid(x):
     """
     Calculates and returns the sigmoid of given input x
 
@@ -17,23 +17,11 @@ def sigmoid_function(x):
     x (float): input value
 
     Returns:
-    float: sigmoid of x
+    array: sigmoid of x
     """
     return 1 / (1 + np.exp(-x))
 
 
-
-def sigmoid(x):
-    """
-    Calculates and returns the sigmoid of given input array x
-
-    Parameters:
-    x (np.array): input value
-
-    Returns:
-    np.array: sigmoid of x
-    """
-    return np.array([sigmoid_function(value) for value in x])
 
 def Batch_GD(X, y, predictions, weights, lambda_, batch_size, iteration):
     """
@@ -131,7 +119,7 @@ class My_LogisticRegression():
 
         for i in range(self.n_iter):
             linear_pred = np.dot(X, self.weights) + self.bias
-            y_pred = sigmoid_function(linear_pred)
+            y_pred = sigmoid(linear_pred)
 
             if self.errIN is not None:
                 errorIN = self.calculate_error(y_pred, y)
@@ -139,7 +127,7 @@ class My_LogisticRegression():
 
                 if X_test is not None:
                     out_lin_pred = np.dot(X_test, self.weights) + self.bias
-                    out_y_pred = sigmoid_function(out_lin_pred)
+                    out_y_pred = sigmoid(out_lin_pred)
                     errorOUT = self.calculate_error(out_y_pred, Y_test)
                     self.errOUT.append(errorOUT)
 
@@ -185,7 +173,7 @@ class My_LogisticRegression():
         numpy.ndarray: Predicted probabilities, shape (n_samples,).
         """
         linear_pred = np.dot(X, self.weights) + self.bias
-        y_pred = sigmoid_function(linear_pred)
+        y_pred = sigmoid(linear_pred)
         return y_pred
     
 
@@ -200,5 +188,5 @@ class My_LogisticRegression():
         numpy.ndarray: Predicted values (0 or 1), shape (n_samples,).
         """
         linear_pred = np.dot(X, self.weights) + self.bias
-        y_pred = sigmoid_function(linear_pred)
+        y_pred = sigmoid(linear_pred)
         return [1 if i > 0.5 else 0 for i in y_pred]
